@@ -140,14 +140,21 @@ to improve playback stability on unstable networks.
 ---
 # Screenshots
 
-## Desktop App
 
-![Desktop UI](screenshots/desktop.png)
+## Desktop Application
 
-## Android App
+<p align="center">
+  <img src="screenshots/desktop.png" width="800"/>
+</p>
 
-![Android UI](screenshots/android.jpg)
-![Android UI](screenshots/android2.jpg)
+## Android Receiver
+
+<p align="center">
+  <img src="screenshots/android.png" width="300"/>
+</p>
+<p align="center">
+  <img src="screenshots/android2.png" width="300"/>
+</p>
 ---
 
 # Author
