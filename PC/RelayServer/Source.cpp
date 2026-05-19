@@ -19,9 +19,8 @@
 #define CHANNELS 2
 #define FRAME_SIZE 960
 
-// =========================
+
 // PACKET HEADER
-// =========================
 #pragma pack(push, 1)
 struct PacketHeader {
     uint32_t seq;
@@ -29,9 +28,8 @@ struct PacketHeader {
 };
 #pragma pack(pop)
 
-// =========================
+
 // UDP SOCKET
-// =========================
 SOCKET create_socket(const char* ip, int port) {
 
     WSADATA wsa;
@@ -53,18 +51,16 @@ SOCKET create_socket(const char* ip, int port) {
     return sock;
 }
 
-// =========================
+
 // TIME
-// =========================
 uint64_t now_ms() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::high_resolution_clock::now().time_since_epoch()
     ).count();
 }
 
-// =========================
+
 // MAIN
-// =========================
 int main(int argc, char* argv[]) {
 
     if (argc < 2) {
@@ -81,9 +77,8 @@ int main(int argc, char* argv[]) {
 
     SOCKET sock = create_socket(ip, port);
 
-    // =========================
+
     // COM + WASAPI
-    // =========================
     CoInitialize(nullptr);
 
     IMMDeviceEnumerator* enumerator = nullptr;
@@ -116,9 +111,8 @@ int main(int argc, char* argv[]) {
 
     audioClient->Start();
 
-    // =========================
+
     // OPUS
-    // =========================
     int err;
     OpusEncoder* encoder = opus_encoder_create(
         SAMPLE_RATE,
@@ -136,9 +130,8 @@ int main(int argc, char* argv[]) {
     opus_encoder_ctl(encoder, OPUS_SET_COMPLEXITY(5));
     opus_encoder_ctl(encoder, OPUS_SET_INBAND_FEC(1));
 
-    // =========================
+
     // RING BUFFER
-    // =========================
     std::vector<short> ringBuffer;
     ringBuffer.reserve(FRAME_SIZE * 10);
 
@@ -147,9 +140,8 @@ int main(int argc, char* argv[]) {
 
     std::cout << "Streaming...\n";
 
-    // =========================
+
     // LOOP
-    // =========================
     while (true) {
 
         UINT32 packetLength = 0;
@@ -174,9 +166,7 @@ int main(int argc, char* argv[]) {
             captureClient->ReleaseBuffer(frames);
             captureClient->GetNextPacketSize(&packetLength);
 
-            // =========================
             // ENCODE EXACT FRAMES
-            // =========================
             while (ringBuffer.size() >= FRAME_SIZE * CHANNELS) {
 
                 short pcm[FRAME_SIZE * CHANNELS];
