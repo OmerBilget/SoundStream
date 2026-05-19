@@ -143,18 +143,10 @@ to improve playback stability on unstable networks.
 
 ## Desktop Application
 
-<p align="center">
+
   <img src="screenshots/desktop.png" width="400" height="auto"/>
-</p>
-
-## Android Receiver
-
-<p align="center">
   <img src="screenshots/android.png" width="300"/>
-</p>
-<p align="center">
   <img src="screenshots/android2.png" width="300"/>
-</p>
 
 
 # Author
