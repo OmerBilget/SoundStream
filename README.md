@@ -149,4 +149,4 @@ to improve playback stability on unstable networks.
 
 # Author
 
-Omer Bilget
+Sinan B.
