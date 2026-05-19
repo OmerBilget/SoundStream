@@ -242,7 +242,7 @@ namespace SoundStream
             int attrSize);
 
 
-        // PROCESS CONTROL (UNCHANGED)
+        // PROCESS CONTROL
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             if (relayProcess != null && !relayProcess.HasExited)
@@ -353,7 +353,7 @@ namespace SoundStream
 
                     try
                     {
-                        SendCmd("QUIT"); // graceful shutdown first
+                        SendCmd("QUIT"); 
                     }
                     catch { }
 
