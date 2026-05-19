@@ -139,13 +139,13 @@ void controlThread(OpusEncoder* encoder, int controlPort) {
         else if (cmd == "STOP") streaming = false;
         else if (cmd == "START") streaming = true;
 
-        // IP SWITCH (FIXED)
+        // IP SWITCH
         else if (cmd.find("SET_IP") == 0) {
             targetIP = cmd.substr(cmd.find(" ") + 1);
             updateSocket(targetIP, targetPort);
         }
 
-        // PORT SWITCH (FIXED)
+        // PORT SWITCH 
         else if (cmd.find("SET_PORT") == 0) {
             int p = atoi(cmd.substr(cmd.find(" ") + 1).c_str());
             targetPort = p;
