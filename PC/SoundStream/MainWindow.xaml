@@ -1,0 +1,254 @@
+﻿<Window x:Class="SoundStream.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SoundStream"
+        Height="850" Width="480"
+        Background="#0F172A"
+        Foreground="#F1F5F9"
+        FontFamily="Segoe UI">
+
+    <!-- ================= RESOURCES ================= -->
+    <Window.Resources>
+
+        <!-- Colors synchronized from Android RelayTheme (Material3 Slate/Sky Palette) -->
+        <SolidColorBrush x:Key="Bg" Color="#0F172A"/>
+        <!-- background -->
+        <SolidColorBrush x:Key="Card" Color="#1E293B"/>
+        <!-- surface -->
+        <SolidColorBrush x:Key="Border" Color="#334155"/>
+        <!-- surfaceVariant -->
+        <SolidColorBrush x:Key="Accent" Color="#38BDF8"/>
+        <!-- primary -->
+        <SolidColorBrush x:Key="AccentDark" Color="#082F49"/>
+        <!-- onPrimary -->
+        <SolidColorBrush x:Key="Text" Color="#F1F5F9"/>
+        <!-- onSurface -->
+        <SolidColorBrush x:Key="Muted" Color="#94A3B8"/>
+        <!-- onSurfaceVariant -->
+        <SolidColorBrush x:Key="StopRed" Color="#F87171"/>
+        <!-- Custom Error/Stop -->
+
+        <!-- ================= CARD ================= -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource Card}"/>
+            <Setter Property="CornerRadius" Value="18"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,14"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                 To="1.01" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                 To="1.01" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                 To="1" Duration="0:0:0.15"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                 To="1" Duration="0:0:0.15"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Section title -->
+        <Style x:Key="SectionTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource Accent}"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <!-- Label -->
+        <Style x:Key="Label" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+            <Setter Property="Margin" Value="0,6,0,2"/>
+        </Style>
+
+        <!-- TextBox -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#0F172A"/>
+            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+        </Style>
+
+        <!-- Button -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource Border}"/>
+            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="12"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.9"/>
+                                <Setter TargetName="bd" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <!-- ================= MAIN GRID ================= -->
+    <Grid Margin="16">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ================= CONNECTION ================= -->
+        <Border Style="{StaticResource CardStyle}" Grid.Row="0">
+            <StackPanel>
+
+                <TextBlock Text="Connection" Style="{StaticResource SectionTitle}"/>
+
+                <TextBlock Text="IP Address" Style="{StaticResource Label}"/>
+                <TextBox x:Name="IpInput" Text="127.0.0.1"/>
+
+                <TextBlock Text="Stream Port" Style="{StaticResource Label}"/>
+                <TextBox x:Name="PortInput" Text="5005"/>
+
+                <TextBlock Text="Control Port" Style="{StaticResource Label}"/>
+                <TextBox x:Name="ControlPortInput" Text="6000"/>
+
+            </StackPanel>
+        </Border>
+
+        <!-- ================= AUDIO ================= -->
+        <Border Style="{StaticResource CardStyle}" Grid.Row="1">
+            <StackPanel>
+
+                <TextBlock Text="Audio Settings" Style="{StaticResource SectionTitle}"/>
+
+                <TextBlock Text="Bitrate" Style="{StaticResource Label}"/>
+
+                <Slider x:Name="BitrateSlider"
+                        Minimum="32000"
+                        Maximum="192000"
+                        Value="48000"
+                        TickFrequency="16000"
+                        IsSnapToTickEnabled="True"
+                        ValueChanged="BitrateSlider_ValueChanged"/>
+
+                <TextBlock x:Name="BitrateValue"
+                           Text="48000 kbps"
+                           HorizontalAlignment="Center"
+                           Foreground="{StaticResource Accent}"
+                           Margin="0,6"/>
+
+                <CheckBox x:Name="ManualBitrateCheck"
+                          Content="Manual Override"
+                          Margin="0,8"
+                          Foreground="{StaticResource Muted}"
+                          Checked="ManualBitrateCheck_Changed"
+                          Unchecked="ManualBitrateCheck_Changed"/>
+
+                <TextBox x:Name="ManualBitrateInput"
+                         IsEnabled="False"/>
+
+            </StackPanel>
+        </Border>
+
+        <!-- ================= CONTROLS ================= -->
+        <Border Style="{StaticResource CardStyle}" Grid.Row="2">
+            <StackPanel>
+
+                <TextBlock Text="Controls" Style="{StaticResource SectionTitle}"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    <Button Content="Start" Background="{StaticResource Accent}"
+                            Foreground="{StaticResource AccentDark}"
+                            Width="140" Margin="6"
+                            Click="Start_Click"/>
+
+                    <Button Content="Stop" Background="{StaticResource StopRed}"
+                            Foreground="White"
+                            Width="140" Margin="6"
+                            Click="Stop_Click"/>
+
+                </StackPanel>
+
+                <WrapPanel HorizontalAlignment="Center" Margin="0,8,0,0">
+
+                    <Button Content="Pause" Margin="5" Click="Pause_Click"/>
+                    <Button Content="Resume" Margin="5" Click="Resume_Click"/>
+                    <Button Content="Bitrate" Margin="5" Click="ApplyBitrate_Click"/>
+                    <Button Content="IP" Margin="5" Click="ChangeIp_Click"/>
+                    <Button Content="Port" Margin="5" Click="ChangePort_Click"/>
+
+                </WrapPanel>
+
+            </StackPanel>
+        </Border>
+
+        <!-- ================= LOG ================= -->
+        <Border Style="{StaticResource CardStyle}" Grid.Row="3">
+            <TextBox x:Name="LogBox"
+                     Background="#020617"
+                     Foreground="{StaticResource Accent}"
+                     FontFamily="Consolas"
+                     FontSize="12"
+                     IsReadOnly="True"
+                     VerticalScrollBarVisibility="Auto"
+                     TextWrapping="Wrap"
+                     BorderThickness="0"/>
+        </Border>
+
+    </Grid>
+</Window>

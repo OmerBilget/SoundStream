@@ -1,0 +1,87 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+
+    <!-- Deep Space Background -->
+    <path
+        android:pathData="M0,0h1024v1024h-1024z"
+        android:fillColor="#0F172A"/>
+
+    <!-- Background Stars (Pronounced Crosses and Circles) -->
+
+
+
+    <!-- The Saturn System Group for Tilt -->
+    <group
+        android:pivotX="512"
+        android:pivotY="512"
+        android:rotation="-22">
+
+        <!-- Back Part of the Ring -->
+        <path
+            android:pathData="M112,512a400,160 0,0 1,800 0"
+            android:strokeWidth="42"
+            android:strokeLineCap="butt">
+            <aapt:attr name="android:strokeColor">
+                <gradient
+                    android:startX="112"
+                    android:startY="512"
+                    android:endX="912"
+                    android:endY="512"
+                    android:type="linear">
+                    <item android:offset="0" android:color="#38BDF8"/>
+                    <item android:offset="1" android:color="#818CF8"/>
+                </gradient>
+            </aapt:attr>
+        </path>
+
+        <!-- The Planet (Drawn smaller for elegance) -->
+        <group
+            android:pivotX="512"
+            android:pivotY="512"
+            android:rotation="22">
+            <path android:pathData="M512,512m-220,0a220,220 0,1 1,440 0a220,220 0,1 1,-440 0">
+                <aapt:attr name="android:fillColor">
+                    <gradient
+                        android:centerX="400"
+                        android:centerY="400"
+                        android:gradientRadius="400"
+                        android:type="radial">
+                        <item android:offset="0" android:color="#38BDF8"/>
+                        <item android:offset="1" android:color="#1E293B"/>
+                    </gradient>
+                </aapt:attr>
+            </path>
+
+            <!-- Rounded Audio Waveform (Professional Strokes) -->
+            <path
+                android:pathData="M372,492v40 M407,472v80 M442,452v120 M477,427v170 M512,407v210 M547,427v170 M582,452v120 M617,472v80 M652,492v40"
+                android:strokeWidth="14"
+                android:strokeLineCap="round"
+                android:strokeColor="#FFFFFF"
+                android:strokeAlpha="0.9"/>
+        </group>
+
+        <!-- Front Part of the Ring -->
+        <path
+            android:pathData="M112,512a400,160 0,0 0,800 0"
+            android:strokeWidth="42"
+            android:strokeLineCap="butt">
+            <aapt:attr name="android:strokeColor">
+                <gradient
+                    android:startX="112"
+                    android:startY="512"
+                    android:endX="912"
+                    android:endY="512"
+                    android:type="linear">
+                    <item android:offset="0" android:color="#38BDF8"/>
+                    <item android:offset="1" android:color="#818CF8"/>
+                </gradient>
+            </aapt:attr>
+        </path>
+    </group>
+
+</vector>

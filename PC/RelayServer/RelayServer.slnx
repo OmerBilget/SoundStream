@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RelayServer.vcxproj" Id="e3fe84e3-98a2-4ab6-bc92-dc7ed73190fc" />
+</Solution>
