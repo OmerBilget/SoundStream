@@ -138,8 +138,17 @@ The Android client includes:
 to improve playback stability on unstable networks.
 
 ---
+# Screenshots
 
+## Desktop App
 
+![Desktop UI](screenshots/desktop.png)
+
+## Android App
+
+![Android UI](screenshots/android.jpg)
+![Android UI](screenshots/android2.jpg)
+---
 
 # Author
 
