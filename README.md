@@ -93,9 +93,6 @@ Current security model:
 - LAN-only usage
 - HMAC-authenticated handshake
 - Replay-resistant session flow
-- No internet exposure intended
-
-This project is designed for trusted local networks.
 
 ---
 
