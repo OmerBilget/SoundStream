@@ -144,7 +144,7 @@ to improve playback stability on unstable networks.
 ## Desktop Application
 
 
-  <img src="screenshots/desktop.png" height="800" /> <img src="screenshots/android.jpg" height="800"/> <img src="screenshots/android2.jpg" height="800"/>
+  <img src="screenshots/desktop.png" height="500" /> <img src="screenshots/android.jpg" height="500"/> <img src="screenshots/android2.jpg" height="500"/>
 
 
 # Author
