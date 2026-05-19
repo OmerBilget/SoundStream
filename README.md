@@ -144,7 +144,7 @@ to improve playback stability on unstable networks.
 ## Desktop Application
 
 <p align="center">
-  <img src="screenshots/desktop.png" width="800"/>
+  <img src="screenshots/desktop.png" width="400" height="auto"/>
 </p>
 
 ## Android Receiver
@@ -155,7 +155,7 @@ to improve playback stability on unstable networks.
 <p align="center">
   <img src="screenshots/android2.png" width="300"/>
 </p>
----
+
 
 # Author
 
